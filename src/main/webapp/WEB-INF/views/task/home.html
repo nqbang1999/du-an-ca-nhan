@@ -23,6 +23,7 @@
         <th>Status</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>View</th>
     </tr>
     <th:block th:each="t : ${tasks}">
         <tr>
@@ -32,6 +33,7 @@
             <td th:text="${t.status.status}"></td>
             <td><a th:href="@{/edit-task/__${t.id}__}">Edit</a></td>
             <td><a th:href="@{/delete-task/__${t.id}__}">Delete</a></td>
+            <td><a th:href="@{/view-task/__${t.id}__}">View</a></td>
         </tr>
     </th:block>
     <div>

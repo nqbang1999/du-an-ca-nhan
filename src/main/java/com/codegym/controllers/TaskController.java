@@ -32,6 +32,8 @@ public class TaskController {
     @Autowired
     private StatusService statusService;
 
+
+
     @GetMapping(value = "/home")
     public ModelAndView listTask(@RequestParam Optional<String> search,
                                  @PageableDefault(size = 5, sort = "id") Pageable pageable) {
@@ -95,5 +97,15 @@ public class TaskController {
         taskService.remove(task.getId());
         return "redirect:/home";
     }
+
+    @GetMapping(value = "/view-task/{id}")
+    public ModelAndView viewTask(@PathVariable Long id) {
+        Task task = taskService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("task/view");
+        modelAndView.addObject("task", task);
+        return modelAndView;
+    }
+
+
 
 }
