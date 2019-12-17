@@ -82,6 +82,18 @@ public class TaskController {
         return modelAndView;
     }
 
+    @GetMapping(value = "/delete-task/{id}")
+    public ModelAndView showDeleteForm(@PathVariable Long id) {
+        Task task = taskService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("task/delete");
+        modelAndView.addObject("task", task);
+        return modelAndView;
+    }
 
+    @PostMapping(value = "/delete-task")
+    public String deleteTask(@ModelAttribute Task task, RedirectAttributes redirect) {
+        taskService.remove(task.getId());
+        return "redirect:/home";
+    }
 
 }

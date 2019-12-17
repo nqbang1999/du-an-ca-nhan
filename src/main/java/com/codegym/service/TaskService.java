@@ -12,4 +12,6 @@ void save(Task task);
 
     Task findById(Long id);
 
+void remove(Long id);
+
 }

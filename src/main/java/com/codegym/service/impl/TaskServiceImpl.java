@@ -30,4 +30,9 @@ private TaskRepository taskRepository;
     public Task findById(Long id) {
         return taskRepository.findOne(id);
     }
+
+    @Override
+    public void remove(Long id) {
+        taskRepository.delete(id);
+    }
 }
