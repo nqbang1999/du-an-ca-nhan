@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1>Task List</h1>
+<p>
+    <a th:href="@{/create-task}">Add New Task</a><br>
+<!--    <a th:href="@{/create-type}">Add New Type Product</a>-->
+</p>
+<form>
+    Search by title:
+    <input name="search" type="text"/>
+    <input type="submit" value="Search"/>
+</form><br/>
+<table border="1">
+    <tr>
+        <th>Title</th>
+<!--        <th>Description</th>-->
+        <th>Target Date</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="t : ${tasks}">
+        <tr>
+            <td th:text="${t.title}"></td>
+<!--            <td th:text="${t.description}"></td>-->
+            <td th:text="${t.targetDate}"></td>
+            <td th:text="${t.status.status}"></td>
+            <td><a th:href="@{/edit-task/__${t.id}__}">Edit</a></td>
+            <td><a th:href="@{/delete-task/__${t.id}__}">Delete</a></td>
+        </tr>
+    </th:block>
+    <div>
+        <a th:href="@{'/home'(page=${tasks.number - 1})}" th:if="${tasks.hasPrevious()}">Previous</a>
+        <span th:text="${tasks.number + 1}"></span>/<span th:text="${tasks.totalPages}"></span>
+        <a th:href="@{'/home'(page=${tasks.number + 1})}" th:if="${tasks.hasNext()}">Next</a>
+    </div>
+</table>
+</body>
+</html>
