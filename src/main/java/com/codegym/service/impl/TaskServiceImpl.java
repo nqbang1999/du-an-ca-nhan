@@ -20,4 +20,14 @@ private TaskRepository taskRepository;
     public Page<Task> findAllByTitle(String title, Pageable pageable) {
         return taskRepository.findAllByTitleContaining(title, pageable);
     }
+
+    @Override
+    public void save(Task task) {
+        taskRepository.save(task);
+    }
+
+    @Override
+    public Task findById(Long id) {
+        return taskRepository.findOne(id);
+    }
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>create</title>
+</head>
+<body>
+<form th:action="@{/create-task}" method="post" th:object="${task}">
+    <h1>Create New Task</h1>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <input type="hidden" th:field="*{id}"/>
+    <table>
+        <tr>
+            <th>Title :</th>
+            <td><input type="text" th:field="*{title}"/></td>
+            <td th:errors="*{title}"></td>
+        </tr>
+        <tr>
+            <th>Status :</th>
+            <td>
+                <select th:field="*{status}">
+                    <option th:each="s : ${status}" th:value="${s.id}" th:text="${s.status}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Description :</th>
+            <td><input type="text" th:field="*{description}"/></td>
+            <td th:errors="*{description}"></td>
+        </tr>
+        <tr>
+            <th>Target Date :</th>
+            <td><input type="date" th:field="*{targetDate}"/></td>
+        </tr>
+
+        <tr>
+            <td><button type="submit">Submit</button></td>
+            <td><a th:href="@{/home}">Cancel</a></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

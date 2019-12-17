@@ -20,9 +20,8 @@ public class Status {
     public Status() {
     }
 
-    public Status(@NotEmpty String status, List<Task> taskList) {
+    public Status(@NotEmpty String status) {
         this.status = status;
-        this.taskList = taskList;
     }
 
     public Long getId() {
