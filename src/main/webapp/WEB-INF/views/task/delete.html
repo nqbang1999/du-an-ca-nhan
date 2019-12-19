@@ -3,34 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 <body>
 <form th:action="@{/delete-task}" method="post" th:object="${task}">
     <h1>Delete task</h1>
-    <input type="hidden" th:field="*{id}"/>
-    <table>
-        <tr>
-            <th>Title :</th>
-            <td th:text="${task.title}"></td>
-        </tr>
-        <tr>
-            <th>Status :</th>
-            <td th:text="${task.status.status}"></td>
-        </tr>
-        <tr>
-            <th>Description :</th>
-            <td th:text="${task.description}"></td>
-        </tr>
-        <tr>
-            <th>Target Date :</th>
-            <td th:text="${task.targetDate}"></td>
 
-        </tr>
+    <input type="hidden" th:field="*{id}"/>
+    <table class="table table-sm table-dark">
+        <thead>
         <tr>
-            <td><button type="submit">Submit</button></td>
-            <td><a th:href="@{/home}">Cancel</a></td>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Target Date</th>
+            <th scope="col">Status</th>
         </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td th:text="${task.title}"></td>
+                <td th:text="${task.description}"></td>
+                <td th:text="${task.targetDate}"></td>
+                <td th:text="${task.status.status}"></td>
+            </tr>
+        </th:block>
+        <div>
+
+        </div>
+        </tbody>
     </table>
+    <tr>
+        <td><button type="submit">Submit</button></td>
+        <td><a th:href="@{/home}">Cancel</a></td>
+    </tr>
+
 </form>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
 </body>
 </html>
